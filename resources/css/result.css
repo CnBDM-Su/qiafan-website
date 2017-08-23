@@ -1,0 +1,113 @@
+.nav_rank li {
+    float: none;
+    display: inline-block;
+}
+.nav_rank li{
+    font-family: 南构唐宝楷;
+    font-size: x-large;
+}
+.nav-tabs{
+    border-bottom: 2px groove rgba(200, 20, 20, 0.5);
+}
+
+
+.nav_rank li a:hover{
+    color:#290b0b;
+    background-color: transparent;
+    font-size: 1.5em;
+    border: none;
+}
+.nav_rank li a:focus, .nav_rank li a:active, .nav_rank li a:visited{
+    color:#290b0b;
+    background-color: transparent;
+    font-size: 1.5em;
+    border: none;
+}
+.card {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .15);
+    overflow: hidden;
+}
+.card .number{
+    position: absolute;
+    z-index: 3;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: 5px;
+}
+
+
+.card .aside {
+    float: left;
+    width: 22.5%;
+    padding: 20px 0 5px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.card .aside img {
+    width: 80%;
+}
+
+.card .aside p {
+    font-size: 8px;
+}
+
+.card .main {
+    background-color: #fafafa;
+    margin-left: 260px;
+    height: 274px;
+    box-sizing: border-box;
+    padding: 0 10% 10% 0;
+
+}
+
+.aside h3{
+    font-family: 南构唐宝楷;
+    font-size: 2.75em;
+    margin-top: 3%;
+}
+.aside h4{
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.div_1 {
+    float:left;
+    height: 274px;
+
+    padding: 0px;
+    overflow: auto;
+    border-radius: 3px;
+
+    color: #333;
+}
+#mCSB_1{
+
+}
+.div_1 h3{
+    font-family: 南构唐宝楷;
+    margin-top: 20px;
+    border-left: solid 7px #000;
+    text-indent: 0.3em;
+}
+.desc {
+    line-height: 2.5em;
+    margin-left: 5%;
+}
+
+.div_2 {
+    float: left;
+    margin-left: 2%;
+}
+.div_2 h3{
+    font-family: 南构唐宝楷;
+    text-indent: 0.3em;
+}
+.div_2 p{
+    text-indent: 2.5em;
+}

@@ -1,0 +1,36 @@
+#dinning_hall_picture {
+    margin-top: 50px;
+    max-width: 25%;
+    height: auto;
+}
+
+#dinning_hall_text_picture {
+    width: 200px;
+    height: auto;
+}
+
+#egg_img {
+    margin-top: 55%;
+    margin-right: -10%;
+    max-width: 100%;
+    height: auto;
+    opacity: 0.5
+}
+#body h1{
+    font-size: 2em;
+    text-indent: 1em;
+    font-family: 南构唐宝楷;
+    font-weight: 500;
+}
+#body th{
+    font-size: 1.5em;
+    text-indent: 1em;
+    font-family: 南构唐宝楷;
+    font-weight: 500;
+}
+
+#body td{
+    font-size: 0.9875em;
+    line-height: 35px;
+    font-weight: 300;
+}

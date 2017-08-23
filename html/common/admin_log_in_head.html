@@ -1,0 +1,51 @@
+﻿#define adminHead()
+<div id="head">
+    <!--顶部导航栏-->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <!--项目名字-->
+            <div class="navbar-header">
+                <a href="#(basePath)/index">
+				<img id="logo_small" src="#(basePath)/resources/images/logo.png" class="img-responsive center-block">
+				</a>
+            </div>
+            <!--右侧用户名-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#(basePath)/managerCenter"><span class="glyphicon glyphicon-user"></span>#(name)</a></li>
+                <li><a href="#(basePath)/logOut"><span class="glyphicon glyphicon-log-out"></span> 退出登陆</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+#end
+#define adminFoot()
+<div id="foot">
+    <!--底部信息-->
+    <div class="container-fluid">
+        <div>
+            <img id="logo_large" class="img-responsive" src="#(basePath)/resources/images/logo.png">
+        </div>
+        <div>
+            <p id="p_info">Address: Xiasha Higher Education Zone, Hangzhou, 310018, Zhejiang Province, People's Republic of China.
+                <br/>团队成员：雷奉伟、李小江、沈致远、苏钰、吴泽群
+                <br/>特别鸣谢：陈超伦、王超、张效伟
+            </p>
+            </p>
+            <p class="text-center">Copyright © 2017.恰饭 - <a target="_blank" href="http://www.miitbeian.gov.cn/">浙ICP备16030096号</a></p>
+        </div>
+    </div>
+</div>
+
+<!--页面所需js加载-->
+<!--jquery v3.2.1-->
+<script src="#(basePath)/resources/js/jquery.min.js"></script>
+
+<!--bootstrap v3.3.7 js-->
+<script src="#(basePath)/resources/js/bootstrap.min.js"></script>
+
+<!--自定义的通用js-->
+<script src="#(basePath)/resources/js/general.js"></script>
+
+<!-- 自定义 模板js-->
+<script src="#(basePath)/resources/js/head_model.js"></script>
+#end

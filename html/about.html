@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端，支持缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>关于我们</title>
+    <!--bootstrap v3.3.7 css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/bootstrap.min.css">
+    <!--自定义的css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/general.css">
+    <link rel="stylesheet" href="#(basePath)/resources/css/about.css">
+</head>
+<body>
+<!--include file="not_log_in_head.html"-->
+#if(name)
+	#include("/html/common/user_log_in_head.html")
+	#@loginHead()
+#else
+	#include("/html/common/not_log_in_head.html")
+	#@notlogHead()
+#end
+<div id="body">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>赴戍登程口占示家人</h1>
+            <small>—— 林则徐</small>
+            <p>力微任重久神疲，再竭衰庸定不支。</p>
+            <p>苟利国家生死以，岂因祸福避趋之？</p>
+            <p>谪居正是君恩厚，养拙刚于戍卒宜。</p>
+            <p>戏与山妻谈故事，试吟断送老头皮。</p>
+        </div>
+    </div>
+</div>
+<!--include file="foot.html"-->
+#include("/html/common/foot.html")
+#@foot()
+</body>
+</html>

@@ -1,0 +1,327 @@
+#include("/html/common/admin_log_in_head.html")
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端，支持缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>恰饭后台管理</title>
+    <!--bootstrap v3.3.7 css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/bootstrap.min.css">
+    <!--自定义的css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/general.css">
+    <link rel="stylesheet" href="#(basePath)/resources/css/admin.css">
+</head>
+<body>
+<!-- file="admin_log_in_head.html"-->
+#@adminHead()
+
+<div id="body" style="padding-top:15px">
+    <!--modal要求放在html文件最前面-->
+    <div class="container-fluid">
+        <!--修改菜品modal弹窗-->
+        <div id="modify_dish_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!--modal内容-->
+                <div class="modal-content">
+                    <!--modal头部-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">修改菜品</h4>
+                    </div>
+                    <form class="form-horizontal">
+                        <!--modal主体-->
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="dish_name_modal">菜品名称：</label>
+                            <div class="col-sm-9">
+                                <input required type="text" id="dish_name_modal" class="form-control" placeholder="菜品名称">
+                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="dish_dinning_hall_modal">所属食堂：</label>
+                            <div class="col-sm-9">
+                                <select required class="form-control" id="dish_dinning_hall_modal">
+                                    #for(num:canteenNames)
+                                        <option>#(num.name)</option>
+                                    #end
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="dish_description_modal">菜品描述：</label>
+                            <div class="col-sm-9">
+                                <textarea required id="dish_description_modal" class="form-control" rows="10" placeholder="菜品描述"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="dish_price_modal">价格：</label>
+                            <div class="col-sm-9">
+                                <input required type="text" id="dish_price_modal" class="form-control" placeholder="价格">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="dish_upload_img_modal">上传图片：</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="dish_upload_img_modal" class="form-control" placeholder="待写">
+                            </div>
+                        </div>
+                        <!--modal尾部-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                            <button type="submit" class="btn btn-warning" id="modify_dish_model_button" data-dismiss="modal">修改菜品</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--修改食堂modal弹窗-->
+        <div id="modify_dinning_hall_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!--modal内容-->
+                <div class="modal-content">
+                    <!--modal头部-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">修改食堂</h4>
+                    </div>
+                    <form class="form-horizontal">
+                        <!--modal主体-->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="dinning_hall_name_modal">食堂名称：</label>
+                                <div class="col-sm-9">
+                                    <input required type="text" id="dinning_hall_name_modal" class="form-control" placeholder="食堂名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="dinning_hall_school_modal">所属学校：</label>
+                                <div class="col-sm-9">
+                                    <input required type="text" id="dinning_hall_school_modal" class="form-control" placeholder="所属学校">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="dinning_hall_description_modal">食堂描述：</label>
+                                <div class="col-sm-9">
+                                    <textarea required id="dinning_hall_description_modal" class="form-control" rows="10" placeholder="食堂描述"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="dinning_hall_upload_img_modal">上传图片：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="dinning_hall_upload_img_modal" class="form-control" placeholder="待写">
+                                </div>
+                            </div>
+                        </div>
+                        <!--modal尾部-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                            <button type="button" class="btn btn-warning" id="modify_canteen_model_button" data-dismiss="modal">修改食堂</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--其余主体内容-->
+    <div class="container-fluid">
+        <!--左侧选择菜单-->
+        <div class="col-sm-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#dishes_trace" data-toggle="pill" id="show_dish">菜品追踪 <span class="badge">#(dishNum[0].num)</span></a></li>
+                <li><a href="#dinning_halls_trace" data-toggle="pill" id="show_canteen">食堂追踪 <span class="badge">#(canteenNum[0].num)</span></a></li>
+                <li><a href="#add_dish" role="tab" data-toggle="pill" id="save_dish">添加菜品</a></li>
+                <li><a href="#add_dinning_hall" role="tab" data-toggle="pill">添加食堂</a></li>
+                <li><a href="#modify_password" data-toggle="pill">修改密码</a></li>
+            </ul>
+        </div>
+        <!--右侧手风琴折叠加分页加添加菜品加修改密码-->
+        <div class="tab-content col-sm-10">
+            <!--菜品追踪完成-->
+            <div id="dishes_trace" class=" tab-pane fade in active">
+                <!--手风琴折叠-->
+                <div id="dishes" class="panel-group">
+                	#setLocal(num=0)
+                	#for(dish:dishs)
+                	<div class="panel panel-default" id="dishId_#(dish.Did)">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <div class="panel-group">
+                                    <a data-toggle="collapse" data-parent="#dishes" href="#dish_#(++num)">
+                                      	#(dish.Dname)
+                                    </a>
+                                    <button type="submit" class="btn btn-danger col-sm-offset-1 pull-right delete_button delete_dish" data-id="#(dish.Did)">删除</button>
+                                    <button type="submit" class="btn btn-warning col-sm-offset-2 pull-right modify_dish" data-toggle="modal" data-target="#modify_dish_modal" data-id="#(dish.Did)">修改</button>
+                                </div>
+                            </h4>
+                        </div>
+                        <div id="dish_#(num)" class="panel-collapse collapse #if(num==1) in #end">
+                            <div class="panel-body">
+                                <p>食堂：#(dish.Cname)</p>
+                                <p>描述：#(dish.Ddescription)</p>
+                                <p>价格：RMB #(dish.Dprice)</p>
+                                <div class="col-sm-2">
+                                    <span class="glyphicon glyphicon-align-left"> 评分(满分10分)：</span>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="progress">
+                                    	#if(dish.Dmark<6)
+                                        	#setLocal(color='progress-bar-danger',text='不及格')
+                                        #elseif(dish.Dmark>=6 && dish.Dmark<8)
+                                        	#setLocal(color='progress-bar-info',text='良好')
+                                        #else
+                                        	#setLocal(color='progress-bar-success',text='优秀')
+                                        #end 
+                                        <div class="progress-bar #(color) progress-bar-striped active" role="progressbar" aria-valuenow="#(dish.Dmark*10)"
+                                             aria-valuemin="0" aria-valuemax="100" style="width:#(dish.Dmark*10)%">
+                                            #(dish.Dmark)分 （#(text)）
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                	#end
+                </div>
+                <!--分页-->
+                <div>
+                    <ul class="pagination pull-right">
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='#'"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <button disabled type="submit" class="btn btn-default" onclick="window.location.href='#'"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </ul>
+                </div>
+            </div>
+            <!--食堂追踪完成-->
+            <div id="dinning_halls_trace" class=" tab-pane fade">
+                <!--手风琴折叠-->
+                <div id="dinning_halls" class="panel-group">
+                   
+                </div>
+                <!--分页-->
+                <div>
+                    <ul class="pagination pull-right">
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='#'"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='#'"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </ul>
+                </div>
+            </div>
+
+            <!--添加菜品 完成-->
+            <div id="add_dish" class=" tab-pane fade">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dish_name">菜品名称：</label>
+                        <div class="col-sm-10">
+                            <input required type="text" id="dish_name" class="form-control" placeholder="菜品名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dish_dinning_hall">所属食堂：</label>
+                        <div class="col-sm-10">
+                            <select required class="form-control" id="dish_dinning_hall">
+                            	#for(num:canteenNames)
+                                <option>#(num.name)</option>
+                                #end
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dish_description">菜品描述：</label>
+                        <div class="col-sm-10">
+                            <textarea required id="dish_description" class="form-control" rows="10" placeholder="菜品描述"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dish_price">价格：</label>
+                        <div class="col-sm-10">
+                            <input required type="text" id="dish_price" class="form-control" placeholder="价格">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dish_upload_img">上传图片：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="dish_upload_img" class="form-control" placeholder="待写">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-primary" id="add_dish_submit">添加菜品</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--添加食堂 完成-->
+            <div id="add_dinning_hall" class=" tab-pane fade">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dinning_hall_name">食堂名称：</label>
+                        <div class="col-sm-10">
+                            <input required type="text" id="dinning_hall_name" class="form-control" placeholder="食堂名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dinning_hall_school">所属学校：</label>
+                        <div class="col-sm-10">
+                            <input required type="text" id="dinning_hall_school" class="form-control" placeholder="所属学校">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dinning_hall_description">食堂描述：</label>
+                        <div class="col-sm-10">
+                            <textarea required id="dinning_hall_description" class="form-control" rows="10" placeholder="食堂描述"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dinning_hall_upload_img">上传图片：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="dinning_hall_upload_img" class="form-control" placeholder="待写">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-primary" id="add_dinning_hall_submit">添加食堂</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--修改密码完成-->
+            <div id="modify_password" class=" tab-pane fade">
+               <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="origin_password">原密码</label>
+                        <div class="col-sm-10">
+                            <input required type="password" id="origin_password" class="form-control" placeholder="输入原密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="new_password">新密码</label>
+                        <div class="col-sm-10">
+                            <input required type="password" id="new_password" class="form-control" placeholder="输入新密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="confirm_password">确认新密码</label>
+                        <div class="col-sm-10">
+                            <input required type="password" id="confirm_password" class="form-control" placeholder="重复输入密码">
+                        </div>
+                    </div>
+               </form>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-warning" id="modify_password_button">修改密码</button>
+                        </div>
+                    </div>               
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- file="foot.html"-->
+
+#@adminFoot()
+<!-- 当前页面自己要用的js -->
+<script src="#(basePath)/resources/js/admin.js"></script>
+
+</body>
+</html>

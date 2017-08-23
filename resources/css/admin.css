@@ -1,0 +1,12 @@
+.delete_button{
+    margin-left: 1%;
+}
+#dishes .col-sm-2{
+    padding-left: 0;
+    padding-right:0;
+}
+#dinning_halls .col-sm-2{
+    padding-left: 0;
+    padding-right:0;
+}
+

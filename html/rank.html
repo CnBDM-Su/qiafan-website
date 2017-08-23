@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端，支持缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>美食排行榜</title>
+    <!--bootstrap v3.3.7 css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/bootstrap.min.css">
+    <!--滚动条的css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/jquery.mCustomScrollbar.css">
+    <!--评分的css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/jquery.raty.css">
+    <!--自定义的css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/general.css">
+    <link rel="stylesheet" href="#(basePath)/resources/css/rank.css">
+
+</head>
+<body>
+<!--include file="not_log_in_head.html"-->
+#if(name)
+	#include("/html/common/user_log_in_head.html")
+	#@loginHead()
+#else
+	#include("/html/common/not_log_in_head.html")
+	#@notlogHead()
+#end
+<div id="body">
+    <div class="container-fluid">
+        <!--一行留给图片-->
+        <div>
+
+        </div>
+        <!--排行榜排序选项-->
+        <div class="row">
+            <ul class="nav nav-tabs text-center nav_rank col-sm-offset-4 col-sm-4">
+                <li><a id="dish_compre_rank">综合</a></li>
+                <li><a id="dish_price_rank">价格</a></li>
+                <li><a id="dish_mark_rank">评分</a></li>
+            </ul>
+        </div>
+        <!--排行榜内容-->
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+
+                <section class="list" id="list">
+                </section>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--include file="foot.html"-->
+#include("/html/common/foot.html")
+#@foot()
+<!--本页面所用的js-->
+<!--滚动条的js-->
+<script src="#(basePath)/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--评分的js-->
+<script src="#(basePath)/resources/js/jquery.raty.js"></script>
+<script src="#(basePath)/resources/js/rank.js"></script>
+</body>
+</html>

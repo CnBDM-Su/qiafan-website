@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端，支持缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>食堂介绍</title>
+    <!--bootstrap v3.3.7 css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/bootstrap.min.css">
+    <!--自定义的css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/general.css">
+    <link rel="stylesheet" href="#(basePath)/resources/css/intro.css">
+</head>
+<body>
+
+<!--include file="not_log_in_head.html"-->
+#if(name)
+	#include("/html/common/user_log_in_head.html")
+	#@loginHead()
+#else
+	#include("/html/common/not_log_in_head.html")
+	#@notlogHead()
+#end
+<div id="body">
+    <div class="container-fluid">
+        <!--左侧图片灯笼和文字等-->
+        <div class="col-sm-9">
+            <!--食堂照片-->
+            <div>
+                <img id="dinning_hall_picture" class="img-responsive center-block" src="#(basePath)/resources/images/#(canteen_pic)">
+            </div>
+            <!--食堂文字照片-->
+            <div>
+                <img id="dinning_hall_text_picture" class="img-responsive center-block" src="#(basePath)/resources/images/#(canteen_text)">
+            </div>
+            <!--食堂详细介绍-->
+            <div>
+                <!--详细介绍头部-->
+                <div>
+                    <h1 >关于</h1>
+                </div>
+                <!--详细介绍主体（表格）-->
+                <div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th class="col-sm-2">介绍</th>
+                                <td class="col-sm-10">
+                                    <p>#(canteen.Cdescription)</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="col-sm-2">所属学校</th>
+                                <td class="col-sm-10">
+                                    <p>#(canteen.Cschool)</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右侧半透明鸡蛋-->
+        <div class="col-sm-3">
+            <img id="egg_img" class="pull-right" src="#(basePath)/resources/images/egg.png">
+        </div>
+        <!--底部食物照片展示-->
+        <div class="row">
+            <div class="dish col-sm-3">
+                <img class="img-responsive center-block" src="#(basePath)/resources/images/index_1.jpg">
+            </div>
+            <div class="dish col-sm-3">
+                <img class="img-responsive center-block" src="#(basePath)/resources/images/index_2.jpg">
+            </div>
+            <div class="dish col-sm-3">
+                <img class="img-responsive center-block" src="#(basePath)/resources/images/index_2.jpg">
+            </div>
+            <div class="dish col-sm-3">
+                <img class="img-responsive center-block" src="#(basePath)/resources/images/index_1.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+<!--include file="foot.html"-->
+#include("/html/common/foot.html")
+#@foot()
+</body>
+</html>

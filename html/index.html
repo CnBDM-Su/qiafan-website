@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--适配移动端，支持缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>恰饭</title>
+    <!--bootstrap v3.3.7 css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/bootstrap.min.css">
+    <!--自定义的css-->
+    <link rel="stylesheet" href="#(basePath)/resources/css/general.css">
+    <link rel="stylesheet" href="#(basePath)/resources/css/index.css">
+</head>
+<body data-spy="scroll" data-target="#left_nav" data-offset="20">
+
+<!--include file="not_log_in_head.html"-->
+#if(name)
+	#include("/html/common/user_log_in_head.html")
+	#@loginHead()
+#else
+	#include("/html/common/not_log_in_head.html")
+	#@notlogHead()
+#end
+<div id="body">
+    <div class="container-fluid">
+        <div class="row">
+            <!--左侧导航栏-->
+            <nav class="col-sm-1" id="left_nav">
+                <ul class="nav nav-pills nav-stacked">
+                    <div class="back_to_top">
+                        <li><a href="#top" class="page-scroll pull-right"><img src="#(basePath)/resources/images/dragon.png" alt=""></a></li>
+                    </div>
+                    <li><a class="page-scroll" href="#section1">新</a></li>
+                    <li><a class="page-scroll" href="#section2">壹</a></li>
+                    <li><a class="page-scroll" href="#section3">贰</a></li>
+                    <li><a class="page-scroll" href="#section4">叁</a></li>
+                </ul>
+            </nav>
+            <!--右侧滚动显示的内容-->
+            <div class="col-sm-12">
+                <!--第一眼展示的图-->
+                <div id="section1">
+                    <img class="img-responsive center-block" src="#(basePath)/resources/images/top_pic_1.jpg">
+
+                    <div id="logo_top_right">
+                        <img class="img-responsive" src="#(basePath)/resources/images/logo_top_pic.png">
+                    </div>
+	            </div>
+                <!--一食堂-->
+                <div id="section2">
+                    <div id="section2_head_text" class="col-sm-offset-4">
+                        <img src="#(basePath)/resources/images/dinning_hall_text_1_lantern.png">
+                       <p>
+                        <br>来我的怀里</br>
+                           	 或者</br>
+                            	让我住进你的胃里</br>
+                            	唤醒沉睡的味蕾</br>
+                            	与食物相濡以沫</br>
+                        </p>
+                        <div id="tang_hu_lu" >
+                            <img class="img-responsive" src="#(basePath)/resources/images/tang_hu_lu.png">
+                        </div>
+                    </div>
+                        <div id="slider" class="carousel slide" data-ride="carousel">
+                        <!--下方圆点-->
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider" data-slide-to="1"></li>
+                            <li data-target="#slider" data-slide-to="2"></li>
+                        </ol>
+                        <!--幻灯播放-->
+                        <div class="carousel-inner">
+
+                            <div class="item active">
+                                <img class="img-responsive center-block" src="#(basePath)/resources/images/index_1.jpg">
+                                <div class="carousel-caption">
+                                    <h2>鱼香肉丝</h2>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive center-block" src="#(basePath)/resources/images/index_2.jpg">
+                                <div class="carousel-caption">
+                                    <h2>糖醋里脊</h2>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive center-block" src="#(basePath)/resources/images/index_1.jpg">
+                                <div class="carousel-caption">
+                                    <h2>全家桶</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <!--左右侧控制箭头-->
+                        <a class="left carousel-control" href="#slider" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#slider" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div>
+                        <div id="section2_bottom_text">
+
+                        </div>
+                        <div id="section2_bottom_text_2">
+
+                        </div>
+                    </div>
+
+                </div>
+                <!--二食堂-->
+                <div id="section3" class="three_div">
+                    <div id="section3_head_text" class="col-sm-offset-4">
+                        <img src="#(basePath)/resources/images/dinning_hall_text_2_lantern.png">
+                    </div>
+
+                    <div id="shao_zi" >
+                        <img class="img-responsive" src="#(basePath)/resources/images/shao_zi.png">
+                    </div>
+
+                    <div class="div_2_1">
+                        <div class="description">
+                            <h2>特邀 新疆清真名厨</h2>
+                            <h3>مەجنۇن  موللا</h3>
+                            <h3> ئابدۇمەمەت   </h3>
+                            <p>要统计中国菜的菜品数量</p>
+                            <p>毫无争议地划分菜系</p>
+                            <p>是一件几乎不可能完成的事</p>
+                            <p>这些显得简单，有时候却又无比复杂。</p>
+
+                        </div>
+                        <img class="img-responsive center-block div_3_1" src="#(basePath)/resources/images/chef.jpg">
+                    </div>
+                    <div class="div_2_2  container-fluid">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <!--手风琴-->
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                                甄选新鲜时蔬</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            选用无公害有机的胡萝卜与花椰菜。
+                                            </br>原产自欧洲的胡萝卜，每100克中，约含蛋白质0.6克，脂肪0.3克，糖类7.6-8.3克，铁0.6毫克，维生素A原（胡萝卜素）1.35-17.25毫克，维生素B10.02-0.04毫克，维生素B20.04-0.05毫克，维生素C12毫克，热量150.7千焦，另含果胶、淀粉、无机盐和多种氨基酸。
+                                            </br>花椰菜，一种很受人们欢迎的蔬菜，味道鲜美，营养也很高，还有很高的药用价值。维生素C含量非常丰富，还具有抗癌功效，平均营养价值及防病作用远远超出其他蔬菜。
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                                上等新西兰银鳕鱼</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            肉质细嫩，鲜嫩可口。
+                                            </br>奶白色的厚实鱼肉极为鲜嫩细腻，香浓的汁液蕴藏其中，伴着醇香。
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                                喷香奶油浓汤</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">没什么可说的，就是好吃~</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <img src="#(basePath)/resources/images/er_shi_tang_ce_tu.png" class="img-responsive">
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+                <!--三食堂-->
+                <div id="section4" class="container-fluid three_div">
+                    <div id="section4_head_text" class="col-sm-4">
+                        <img src="#(basePath)/resources/images/dinning_hall_text_3_lantern.png">
+                    </div>
+
+                    <div id="xiao_la_jiao" >
+                        <img class="img-responsive" src="#(basePath)/resources/images/xiao_la_jiao.png">
+                    </div>
+
+                    <div class="div_2">
+                        <img class="img-responsive center-block div_1" src="#(basePath)/resources/images/spicy_hot_pot.gif">
+                        <div class="description">
+                            <h2>舌尖上的杭电</h2>
+                            <h3>煎炸蒸、火候、食材</h3>
+                            <p><br/>要统计中国菜的菜品数量</p>
+                            <p>毫无争议地划分菜系</p>
+                            <p>是一件几乎不可能完成的事</p>
+                            <p>这些显得简单，有时候却又无比复杂。</p>
+                            <p>唯美食与爱 不可辜负。</p>
+                        </div>
+                        <img class="img-responsive center-block div_3" src="#(basePath)/resources/images/noodles.gif">
+                    </div>
+                    <div id="end_words" class="text-center">
+                        <p>是盐的味道。山的味道，风的味道，阳光的味道，也是时间的味道，人情的味道。<br/>
+                            这些味道，已经在漫长的时光中和故土、乡亲、念旧、勤俭、坚忍等等情感和信念混合在一起，
+                        </br>才下舌尖，又上心间，让我们几乎分不清哪一个是滋味，哪一种是情怀。</p>
+                        <div class="back_to_top">
+                            <a href="#top" class="page-scroll back-to-top pull-right"><img src="#(basePath)/resources/images/back_to_top.png" alt=""></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--include file="foot.html"-->
+#include("/html/common/foot.html")
+#@foot()
+<!--侧边导航栏所用的js-->
+<script src="#(basePath)/resources/js/jquery.easing.min.js"></script>
+<script src="#(basePath)/resources/js/scrolling-nav.js"></script>
+</body>
+</html>

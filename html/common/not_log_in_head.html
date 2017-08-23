@@ -1,0 +1,146 @@
+#define notlogHead()
+<div id="head">
+    <!--modal要求放在html文件最前面-->
+    <div class="container-fluid">
+        <!--注册modal弹窗-->
+        <div id="sign_up_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!--modal内容-->
+                <div class="modal-content">
+                    <!--modal头部-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">用户注册</h4>
+                    </div>
+                    <form class="form-horizontal">
+                        <!--modal主体-->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="sign_up_modal_user_name">用户名：</label>
+                                <div class="col-sm-9">
+                                    <input required type="text" class="form-control" id="sign_up_modal_user_name" name="sign_up_modal_user_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="sign_up_modal_password">密码：</label>
+                                <div class="col-sm-9">
+                                    <input required type="password" class="form-control" id="sign_up_modal_password" name="sign_up_modal_password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="sign_up_modal_confirm_password">确认密码：</label>
+                                <div class="col-sm-9">
+                                    <input required type="password" class="form-control" id="sign_up_modal_confirm_password" name="sign_up_modal_confirm-password">
+                                </div>
+                            </div>
+                        </div>
+                        <!--modal尾部-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                            <button type="button" class="btn btn-primary" id="sign_up_modal_button" data-toggle="modal" >注册</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--登录modal弹窗-->
+        <div id="log_in_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!--modal内容-->
+                <div class="modal-content">
+                    <!--modal头部-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">用户登录</h4>
+                    </div>
+                    <form class="form-horizontal">
+                        <!--modal主体-->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="log_in_modal_user_name">用户名：</label>
+                                <div class="col-sm-9">
+                                    <input required type="text" class="form-control" id="log_in_modal_user_name" name="log_in_modal_user_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="log_in_modal_password">密码：</label>
+                                <div class="col-sm-9">
+                                    <input required type="password" class="form-control" id="log_in_modal_password" name="log_in_modal_password">
+                                </div>
+                            </div>
+                        </div>
+                        <!--modal尾部-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                            <button type="button" class="btn btn-primary" id="log_in_modal_button">登录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--反馈modal弹窗-->
+        <div id="feedback_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!--modal内容-->
+                <div class="modal-content">
+                    <!--modal头部-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">反馈信息文本</h4>
+                    </div>
+                    <!--modal主体-->
+                    <div class="modal-body">
+                        <p class="text-success text-center">成了！</p>
+                    </div>
+                    <!--modal尾部-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--顶部导航栏-->
+    <nav id="top" class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <!--项目名字-->
+            <div class="navbar-header">
+                <a href="#(basePath)/index">
+                    <img id="logo_small" src="#(basePath)/resources/images/logo.png" class="img-responsive center-block">
+                </a>
+            </div>
+            <!--选项-->
+            <ul id="head_nav" class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">食堂介绍
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#(basePath)/introduction/1">第一餐厅</a></li>
+                        <li><a href="#(basePath)/introduction/2">第二餐厅</a></li>
+                        <li><a href="#(basePath)/introduction/3">第三餐厅</a></li>
+                    </ul>
+                </li>
+                <li><a href="#(basePath)/rank">美食排行榜</a></li>
+                <li><a href="#(basePath)/managerCenter">个人中心</a></li>
+                <li><a href="#(basePath)/about">关于我们</a></li>
+            </ul>
+            <!--右侧注册登陆-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-toggle="modal" href="#sign_up_modal"><span class="glyphicon glyphicon-user "></span> 注册</a></li>
+                <li><a data-toggle="modal" href="#log_in_modal"><span class="glyphicon glyphicon-log-in"></span> 登陆</a></li>
+            </ul>
+            <!--右侧搜索框-->
+            <form class="navbar-form navbar-right">
+                <div class="input-group">
+                    <input required type="text" class="form-control" placeholder="我好饿，想恰饭">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='#'" >
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+</div>
+#end
